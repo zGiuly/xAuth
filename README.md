@@ -1,2 +1,2 @@
 # xAuth
-Auth plugin for spigot server
+zAuth plugin for spigot server
