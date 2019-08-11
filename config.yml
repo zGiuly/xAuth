@@ -1,0 +1,5 @@
+messages:
+  password_not_correct: "Password non corretta!"
+  logged: "Loggato!"
+  registered: "Registrato!"
+  user_exists: "Utente esistente!"
