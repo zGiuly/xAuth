@@ -20,7 +20,7 @@ public class TaskManager {
         try {
             if (Bukkit.getPlayerExact(user).isOnline()) {
                 if(tasks.containsKey(user)) return;
-                task.runTaskTimerAsynchronously(plugin, 0, delay);
+                task.runTaskTimer(plugin, 0, delay);
                 tasks.put(user, task);
             }
         }catch (NullPointerException ignored){}
