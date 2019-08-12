@@ -4,6 +4,7 @@ import it.zgiulydev.zauth.commands.CommandManager;
 import it.zgiulydev.zauth.commands.LoginCommand;
 import it.zgiulydev.zauth.commands.RegisterCommand;
 import it.zgiulydev.zauth.sql.Database;
+import it.zgiulydev.zauth.tasks.TaskManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -14,6 +15,7 @@ public class zAuth extends JavaPlugin {
     private static zAuth instance;
     private Database database;
     private Set<String> logged;
+    private TaskManager taskManager;
 
     @Override
     public void onEnable() {
@@ -22,6 +24,7 @@ public class zAuth extends JavaPlugin {
         database = new Database(new File(getDataFolder(), "sql.db"));
         database.connect();
         logged = new HashSet<>();
+        taskManager = new TaskManager(this);
         new CommandManager(this, new LoginCommand(), new RegisterCommand()).registerCommands();
     }
 
@@ -35,5 +38,9 @@ public class zAuth extends JavaPlugin {
 
     public Database getDb() {
         return database;
+    }
+
+    public TaskManager getTaskManager() {
+        return taskManager;
     }
 }

@@ -2,6 +2,7 @@ package it.zgiulydev.zauth.commands;
 
 import it.zgiulydev.zauth.sql.UserManager;
 import it.zgiulydev.zauth.utils.Messages;
+import it.zgiulydev.zauth.zAuth;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -17,6 +18,7 @@ public class RegisterCommand extends Command {
             String password = strings[1];
             if(new UserManager(player.getName(), password).registerUser()) {
                 player.sendMessage(Messages.REGISTERED.toString());
+                zAuth.getInstance().getLogged().add(player.getName());
             }else {
                 player.sendMessage(Messages.USER_EXISTS.toString());
             }
